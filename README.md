@@ -18,3 +18,15 @@
 3. View All rewards with user names
 4. If points are not sufficient then the reward cannot be awarded
 5. Rewarded points cannot be sent as reward to anyone
+
+# after cloning the repo
+
+cd backend
+npm i
+npm start
+
+# new terminal
+
+cd frontend
+npm i
+npm run serve
