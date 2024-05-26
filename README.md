@@ -8,6 +8,7 @@
 * All rewards can be seen in tabular manner where every transaction is shown with names of users
 
 # Completed
+--- Only APIs functional---
 1. APIs related to users
 * Create User
 * View A User
