@@ -25,6 +25,16 @@ const createReward = async (req, res) => {
   }
 };
 
+const getAllRewards = async (req, res) => {
+  try {
+    const rewards = await rewardService.getAllRewards();
+    res.json(rewards);
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
+};
+
 export default {
   createReward,
+  getAllRewards,
 };

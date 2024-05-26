@@ -49,6 +49,48 @@ const createReward = async (userId, awardeeId, points) => {
   }
 };
 
+const getAllRewards = async () => {
+  try {
+    const rewards = await RewardHistory.aggregate([
+      {
+        $lookup: {
+          from: "users",
+          localField: "givenBy",
+          foreignField: "_id",
+          as: "giver",
+        },
+      },
+      {
+        $lookup: {
+          from: "users",
+          localField: "givenTo",
+          foreignField: "_id",
+          as: "receiver",
+        },
+      },
+      {
+        $unwind: "$giver",
+      },
+      {
+        $unwind: "$receiver",
+      },
+      {
+        $project: {
+          points: 1,
+          givenBy: "$giver.name",
+          givenTo: "$receiver.name",
+          dateGiven: "$createdAt",
+        },
+      },
+    ]);
+
+    return rewards;
+  } catch (error) {
+    throw error;
+  }
+};
+
 export default {
   createReward,
+  getAllRewards,
 };

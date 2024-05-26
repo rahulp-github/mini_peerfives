@@ -7,11 +7,11 @@ const rewardHistorySchema = new mongoose.Schema(
       required: true,
     },
     givenTo: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
       required: true,
     },
     givenBy: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
       required: true,
     },
   },
